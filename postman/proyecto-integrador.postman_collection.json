@@ -1,0 +1,864 @@
+{
+	"info": {
+		"_postman_id": "00a20656-c848-4903-88fc-2ada57f6122a",
+		"name": "proyecto-integrador",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "GET products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"name\": \"Renault\",\r\n            \"year\": \"2014\",\r\n            \"description\": \"Carro\",\r\n            \"city\": {\r\n                \"id\": 1,\r\n                \"name\": \"Bogota\",\r\n                \"country\": \"Colombia\"\r\n            },\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"Automovil\",\r\n                \"type\": \"Auto\"\r\n            },\r\n            \"policy\": {\r\n                \"id\": 1,\r\n                \"name\": \"check-in\",\r\n                \"description\": \"el check-in es antes de las 10am\",\r\n                \"invoice\": 1000.0\r\n            },\r\n            \"image\": {\r\n                \"id\": 1,\r\n                \"name\": \"mi-imagen.png\",\r\n                \"description\": \"una imagen\",\r\n                \"url\": \"http://localhost:8080/images\"\r\n            }\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Ford\",\r\n        \"year\": \"2022\",\r\n        \"description\": \"Carro\",\r\n        \"city\": {\r\n            \"id\": 2,\r\n            \"name\": \"Medellin\",\r\n            \"country\": \"Colombia\"\r\n        },\r\n        \"category\": {\r\n            \"id\": 1,\r\n            \"name\": \"Automovil\",\r\n            \"type\": \"Auto\"\r\n        },\r\n        \"policy\": {\r\n            \"id\": 1,\r\n            \"name\": \"check-in\",\r\n            \"description\": \"el check-in es antes de las 10am\",\r\n            \"invoice\": 1000.0\r\n        },\r\n        \"image\": {\r\n            \"id\": 1,\r\n            \"name\": \"mi-imagen.png\",\r\n            \"description\": \"una imagen\",\r\n            \"url\": \"http://localhost:8080/images\"\r\n        },\r\n        \"features\": null\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET productFindById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET productByCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product/category/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET productsByPolicy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product/policy/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"policy",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET productsByCity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product/city/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"city",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product-feature",
+			"item": [
+				{
+					"name": "GET product-feature",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product-feature",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product-feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST product-feature",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\":{\r\n            \"id\": 10,\r\n            \"name\": \"Renault\",\r\n            \"year\": \"2014\",\r\n            \"description\": \"Carro\",\r\n            \"city\": {\r\n                \"id\": 1,\r\n                \"name\": \"Bogota\",\r\n                \"country\": \"Colombia\"\r\n            },\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"Apartamento\",\r\n                \"type\": \"Vivienda\"\r\n            },\r\n            \"policy\": {\r\n                \"id\": 1,\r\n                \"name\": \"check-in\",\r\n                \"description\": \"el check-in es antes de las 10am\",\r\n                \"invoice\": 1000.0\r\n            },\r\n            \"image\": {\r\n                \"id\": 1,\r\n                \"name\": \"mi-imagen.png\",\r\n                \"description\": \"una imagen\",\r\n                \"url\": \"http://localhost:8080/images\"\r\n            }\r\n    },\r\n    \"feature\":{\r\n        \"id\":2,\r\n        \"name\":\"Piscina\",\r\n        \"type\":\"Piscina\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product-feature",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product-feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET findById product-feature",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product-feature/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product-feature",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT product-feature",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 7,\r\n        \"product\": {\r\n            \"id\": 9,\r\n            \"name\": \"Vivienda\",\r\n            \"year\": \"2001\",\r\n            \"description\": \"Vivienda\",\r\n            \"city\": {\r\n                \"id\": 2,\r\n                \"name\": \"Medellin\",\r\n                \"country\": \"Colombia\"\r\n            },\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"Apartamento\",\r\n                \"type\": \"Vivienda\"\r\n            },\r\n            \"policy\": {\r\n                \"id\": 1,\r\n                \"name\": \"check-in\",\r\n                \"description\": \"el check-in es antes de las 10am\",\r\n                \"invoice\": 1000.0\r\n            },\r\n            \"image\": {\r\n                \"id\": 1,\r\n                \"name\": \"mi-imagen.png\",\r\n                \"description\": \"una imagen\",\r\n                \"url\": \"http://localhost:8080/images\"\r\n            }\r\n        },\r\n        \"feature\": {\r\n            \"id\": 2,\r\n            \"name\": \"Piscina\",\r\n            \"type\": \"Piscina\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product-feature/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product-feature",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE product-feature",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product-feature/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product-feature",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "GET category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET findByIdCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/category/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"category",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Casa\",\r\n        \"type\": \"Vivienda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"name\": \"Casa quinta\",\r\n            \"type\": \"Vivienda\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/category/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/category/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"category",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "city",
+			"item": [
+				{
+					"name": "GET city",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/city",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST city",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"name\": \"Armenia\",\r\n            \"country\": \"Colombia\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/city",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET findByIdCity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/city/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"city",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT city",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Ibague\",\r\n        \"country\": \"Colombia\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/city/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"city",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE city",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/city/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"city",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "policy",
+			"item": [
+				{
+					"name": "GET findByIdPolicy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/policy/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"policy",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET policy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/policy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"policy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST policy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"check-OUT\",\r\n        \"description\": \"el check-out es antes de las 15pm\",\r\n        \"invoice\": 5000.0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/policy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"policy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT policy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"check-out\",\r\n        \"description\": \"el check-out es antes de las 15pm\",\r\n        \"invoice\": 5000.0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/policy/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"policy",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE policy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/policy/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"policy",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "feature",
+			"item": [
+				{
+					"name": "PUT feature",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Cogineria cuero\",\r\n        \"type\": \"Asientos\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/feature/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"feature",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE feature",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/feature/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"feature",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET feature",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/feature",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"feature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET findByIdFeature",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/feature/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"feature",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST feature",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Cama doble\",\r\n        \"type\": \"Cuarto\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/feature",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"feature"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
