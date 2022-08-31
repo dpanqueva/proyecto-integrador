@@ -1,4 +1,4 @@
-package com.dh.proyecto.integrador.model.entity;
+package com.dh.proyecto.integrador.model.entity.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +21,7 @@ public class RoleEntity {
     private Long id;
 
     @Column(name = "nombre")
+    //@Enumerated(EnumType.STRING)
     private String name;
 
     @Column(name = "snactivo")

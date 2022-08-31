@@ -1,5 +1,6 @@
-package com.dh.proyecto.integrador.model.entity;
+package com.dh.proyecto.integrador.model.dto.jwt;
 
+import com.dh.proyecto.integrador.model.entity.jwt.RoleEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,21 +12,19 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "dh_usuario")
-public class UserEntity {
+public class UserDTO {
 
-    @Id
-    @Column(name = "usuario_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "cedula")
     private String document;
 
-    @Column(name = "correo")
     private String email;
 
-    @Column(name = "clave")
     private String password;
+
+    private String name;
+
+    private String lastName;
+    // role
+    private RoleEntity role;
 }

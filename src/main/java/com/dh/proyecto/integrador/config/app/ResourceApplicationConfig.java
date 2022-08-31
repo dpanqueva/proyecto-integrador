@@ -1,4 +1,4 @@
-package com.dh.proyecto.integrador.config;
+package com.dh.proyecto.integrador.config.app;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
