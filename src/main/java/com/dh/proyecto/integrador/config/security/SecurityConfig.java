@@ -69,12 +69,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/auth/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/auth/**","/api/v1/user/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/v1/product/**","/api/v1/category/**"
                 ,"/api/v1/cit/**","/api/v1/feature/**","/api/v1/policy/**","/api/v1/product-feature/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/v1/product/**","/api/v1/category/**"
                 ,"/api/v1/cit/**","/api/v1/feature/**","/api/v1/policy/**","/api/v1/product-feature/**"
-                ,"/api/v1/role/**","/api/v1/user/**").hasAnyRole("ADMIN")
+                ,"/api/v1/role/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.PUT,"/api/v1/product/**","/api/v1/category/**"
                 ,"/api/v1/cit/**","/api/v1/feature/**","/api/v1/policy/**","/api/v1/product-feature/**"
                 ,"/api/v1/role/**","/api/v1/user/**").hasAnyRole("ADMIN")
