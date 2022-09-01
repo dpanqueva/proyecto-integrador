@@ -52,7 +52,6 @@ public class UserServiceImpl implements IUserService {
         userUpdated.setEmail(userNewData.getEmail());
         userUpdated.setLastName(userNewData.getLastName());
         userUpdated.setPassword(userNewData.getPassword());
-        userUpdated.setLastName(userNewData.getLastName());
         userUpdated.setRole(userNewData.getRole());
         return mapperUtil.map(userRepository.save(userUpdated), UserDTO.class);
     }

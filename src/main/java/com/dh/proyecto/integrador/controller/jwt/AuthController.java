@@ -25,9 +25,6 @@ import java.util.Map;
 public class AuthController {
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired

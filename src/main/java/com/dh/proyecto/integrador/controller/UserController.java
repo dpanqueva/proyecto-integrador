@@ -5,6 +5,7 @@ import com.dh.proyecto.integrador.model.dto.jwt.UserDTO;
 import com.dh.proyecto.integrador.model.service.jwt.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -18,6 +19,9 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping
     public ResponseEntity<Map<String, Object>> index() {
         Map<String, Object> response = new HashMap<>();
@@ -28,6 +32,8 @@ public class UserController {
     @PostMapping
     public ResponseEntity<Map<String, Object>> create(@RequestBody UserDTO user) {
         Map<String, Object> response = new HashMap<>();
+        String passWEncrypt = passwordEncoder.encode(user.getPassword());
+        user.setPassword(passWEncrypt);
         response.put("respuesta", userService.save(user));
         return ResponseEntity.created(URI.create("/api/v1/user")).body(response);
     }
@@ -35,6 +41,8 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<Map<String, Object>> update(@RequestBody UserDTO user, @PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
+        String passWEncrypt = passwordEncoder.encode(user.getPassword());
+        user.setPassword(passWEncrypt);
         response.put("respuesta", userService.update(user, id));
         return ResponseEntity.created(URI.create("/api/v1/user")).body(response);
     }

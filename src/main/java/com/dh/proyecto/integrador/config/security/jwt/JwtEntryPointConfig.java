@@ -14,7 +14,11 @@ import java.io.IOException;
 @Component
 public class JwtEntryPointConfig implements AuthenticationEntryPoint {
 
-
+    /**
+     * Punto de interrupción en la autenticación para validar que la autenticación y token
+     * si en los pasos previos hay error, este llegará a este punto a informar un estado
+     * 401 de no autorizado
+     * */
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response
             , AuthenticationException authException) throws IOException, ServletException {

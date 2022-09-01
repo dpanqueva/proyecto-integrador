@@ -22,6 +22,10 @@ public class JwtTokenFilterConfig extends OncePerRequestFilter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
+    /**
+     * Metodo que hace un filtrado de las solicitudes para que antes de que llegue al
+     * recurso se valide si esta permitido o no el acceso a dicho recurso
+     * */
     @SneakyThrows
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

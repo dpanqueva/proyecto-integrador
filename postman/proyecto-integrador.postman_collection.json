@@ -11,6 +11,9 @@
 				{
 					"name": "GET products",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -32,6 +35,16 @@
 				{
 					"name": "POST product",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwiaWF0IjoxNjYxOTgyNjY5LCJleHAiOjE2NjE5ODYyNjl9.C5axAdIni-P2yK_kOhAjE3Pmn1U-ZvGJwJyzEB3Wm20iVBdNrmHma74VHfj_cAsjsWHVcjJaO5cUWeDsHcs0vw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -853,6 +866,573 @@
 								"api",
 								"v1",
 								"feature"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "POST token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\":1013616358,\r\n    \"email\":\"daerb9011@gmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\":\"Diego\",\r\n    \"lastName\":\"Panqueva\",\r\n    \"role\":{\r\n        \"id\":1,\r\n        \"name\":\"ROLE_ADMIN\",\r\n        \"enable\":\"S\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "GET user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA0Mjg0MSwiZXhwIjoxNjYyMDQ2NDQxfQ.i35gDlESai-hZgGyYCxnqvzYf1RXpv2YtHZdHWdWPNIsSwF6q6XuYctBMpj0cu6yixMmFsPKT5XykZsvWY84kA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"document\": \"123456\",\r\n            \"email\": \"dpanquev@emeal.nttdata.com\",\r\n            \"password\": \"12345\",\r\n            \"name\": \"user\",\r\n            \"lastName\": \"prueba\",\r\n            \"role\": {\r\n                \"id\": 2,\r\n                \"name\": \"ROLE_USER\",\r\n                \"enable\": \"S\"\r\n            }\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA0NTU4MiwiZXhwIjoxNjYyMDQ5MTgyfQ.ikfWUxZ-3ArsdQJ-N2eVdE4lukRVk_YuksNUO01zjUzarNwlkXqOJpgEA43r5ats-X6jl2xqjR5s45DBOPFFTQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 5,\r\n        \"document\": \"123456\",\r\n        \"email\": \"dpanquev@emeal.nttdata.com\",\r\n        \"password\": \"12345\",\r\n        \"name\": \"Alejandro\",\r\n        \"lastName\": \"Benitez\",\r\n        \"role\": {\r\n            \"id\": 2,\r\n            \"name\": \"ROLE_USER\",\r\n            \"enable\": \"S\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/user/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA0NTU4MiwiZXhwIjoxNjYyMDQ5MTgyfQ.ikfWUxZ-3ArsdQJ-N2eVdE4lukRVk_YuksNUO01zjUzarNwlkXqOJpgEA43r5ats-X6jl2xqjR5s45DBOPFFTQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/user/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET findByIdUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA0NTU4MiwiZXhwIjoxNjYyMDQ5MTgyfQ.ikfWUxZ-3ArsdQJ-N2eVdE4lukRVk_YuksNUO01zjUzarNwlkXqOJpgEA43r5ats-X6jl2xqjR5s45DBOPFFTQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "booking",
+			"item": [
+				{
+					"name": "GET booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA2Mjk4NSwiZXhwIjoxNjYyMDY2NTg1fQ.rHdEQSuTjOVHW6gnX6m8K25KYkl4aZVSbz4Nl1doeZ-zFRN09_ZByyHz7a1GPq9ibcZPdY9EadRvjDIqIWjP6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/booking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET findByIdBooking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA0NzQxMywiZXhwIjoxNjYyMDUxMDEzfQ.pKKeOu7DCosXHut7I0yvjVktrZv5z4cV94hH5G4xD_LELFTs_Zv2fDVY4PbKqhGvISzE9kfrL59-gXZhRk8Nyw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/booking/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA0NzQxMywiZXhwIjoxNjYyMDUxMDEzfQ.pKKeOu7DCosXHut7I0yvjVktrZv5z4cV94hH5G4xD_LELFTs_Zv2fDVY4PbKqhGvISzE9kfrL59-gXZhRk8Nyw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"checkIn\": \"2022-10-01T05:00:00.000+00:00\",\r\n        \"checkOut\": \"2022-10-21T05:00:00.000+00:00\",\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"Casa\",\r\n            \"year\": \"2015\",\r\n            \"description\": \"Casa\",\r\n            \"city\": {\r\n                \"id\": 1,\r\n                \"name\": \"Bogota\",\r\n                \"country\": \"Colombia\"\r\n            },\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"Apartamento\",\r\n                \"type\": \"Vivienda\"\r\n            },\r\n            \"policy\": {\r\n                \"id\": 1,\r\n                \"name\": \"check-in\",\r\n                \"description\": \"el check-in es antes de las 10am\",\r\n                \"invoice\": 1000.0\r\n            },\r\n            \"image\": {\r\n                \"id\": 1,\r\n                \"name\": \"mi-imagen.png\",\r\n                \"description\": \"una imagen\",\r\n                \"url\": \"http://localhost:8080/images\"\r\n            }\r\n        },\r\n        \"customer\": {\r\n            \"id\": 1,\r\n            \"document\": \"1013616358\",\r\n            \"email\": \"daerb9011@gmail.com\",\r\n            \"password\": \"$2a$10$TzMMHNtXEwvRg1Yd1voRFueordr3IvMFYT85hJQYsuTPYWtnBZpNW\",\r\n            \"name\": \"Diego\",\r\n            \"lastName\": \"Panqueva\",\r\n            \"role\": {\r\n                \"id\": 1,\r\n                \"name\": \"ROLE_ADMIN\",\r\n                \"enable\": \"S\"\r\n            }\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/booking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA0NzQxMywiZXhwIjoxNjYyMDUxMDEzfQ.pKKeOu7DCosXHut7I0yvjVktrZv5z4cV94hH5G4xD_LELFTs_Zv2fDVY4PbKqhGvISzE9kfrL59-gXZhRk8Nyw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"checkIn\": \"2022-10-01T05:00:00.000+00:00\",\r\n        \"checkOut\": \"2022-10-21T05:00:00.000+00:00\",\r\n        \"product\": {\r\n                \"id\": 2,\r\n                \"name\": \"Renault\",\r\n                \"year\": \"2014\",\r\n                \"description\": \"Carro\",\r\n                \"city\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"Bogota\",\r\n                    \"country\": \"Colombia\"\r\n                },\r\n                \"category\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"Apartamento\",\r\n                    \"type\": \"Vivienda\"\r\n                },\r\n                \"policy\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"check-in\",\r\n                    \"description\": \"el check-in es antes de las 10am\",\r\n                    \"invoice\": 1000.0\r\n                },\r\n                \"image\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"mi-imagen.png\",\r\n                    \"description\": \"una imagen\",\r\n                    \"url\": \"http://localhost:8080/images\"\r\n                }\r\n            },\r\n        \"customer\": {\r\n            \"id\": 1,\r\n            \"document\": \"1013616358\",\r\n            \"email\": \"daerb9011@gmail.com\",\r\n            \"password\": \"$2a$10$TzMMHNtXEwvRg1Yd1voRFueordr3IvMFYT85hJQYsuTPYWtnBZpNW\",\r\n            \"name\": \"Diego\",\r\n            \"lastName\": \"Panqueva\",\r\n            \"role\": {\r\n                \"id\": 1,\r\n                \"name\": \"ROLE_ADMIN\",\r\n                \"enable\": \"S\"\r\n            }\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/booking/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA2Mjk4NSwiZXhwIjoxNjYyMDY2NTg1fQ.rHdEQSuTjOVHW6gnX6m8K25KYkl4aZVSbz4Nl1doeZ-zFRN09_ZByyHz7a1GPq9ibcZPdY9EadRvjDIqIWjP6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/booking/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "favorite",
+			"item": [
+				{
+					"name": "GET favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA2OTE5MywiZXhwIjoxNjYyMDcyNzkzfQ.1MEHxkZE4HRyI3UaG74nX45_5EXCBryjDtPtfIDxin3gDGCecENlkfKv78x3Oss54fkr67L8GTCvCyaoWFfNtQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/favorite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET findByIdFavorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA2OTE5MywiZXhwIjoxNjYyMDcyNzkzfQ.1MEHxkZE4HRyI3UaG74nX45_5EXCBryjDtPtfIDxin3gDGCecENlkfKv78x3Oss54fkr67L8GTCvCyaoWFfNtQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/favorite/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"favorite",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA2OTE5MywiZXhwIjoxNjYyMDcyNzkzfQ.1MEHxkZE4HRyI3UaG74nX45_5EXCBryjDtPtfIDxin3gDGCecENlkfKv78x3Oss54fkr67L8GTCvCyaoWFfNtQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"product\": {\r\n            \"id\": 2,\r\n            \"name\": \"Renault\",\r\n            \"year\": \"2014\",\r\n            \"description\": \"Carro\",\r\n            \"city\": {\r\n                \"id\": 1,\r\n                \"name\": \"Bogota\",\r\n                \"country\": \"Colombia\"\r\n            },\r\n            \"category\": {\r\n                \"id\": 1,\r\n                \"name\": \"Apartamento\",\r\n                \"type\": \"Vivienda\"\r\n            },\r\n            \"policy\": {\r\n                \"id\": 1,\r\n                \"name\": \"check-in\",\r\n                \"description\": \"el check-in es antes de las 10am\",\r\n                \"invoice\": 1000.0\r\n            },\r\n            \"image\": {\r\n                \"id\": 1,\r\n                \"name\": \"mi-imagen.png\",\r\n                \"description\": \"una imagen\",\r\n                \"url\": \"http://localhost:8080/images\"\r\n            }\r\n        },\r\n        \"customer\": {\r\n            \"id\": 1,\r\n            \"document\": \"1013616358\",\r\n            \"email\": \"daerb9011@gmail.com\",\r\n            \"password\": \"$2a$10$TzMMHNtXEwvRg1Yd1voRFueordr3IvMFYT85hJQYsuTPYWtnBZpNW\",\r\n            \"name\": \"Diego\",\r\n            \"lastName\": \"Panqueva\",\r\n            \"role\": {\r\n                \"id\": 1,\r\n                \"name\": \"ROLE_ADMIN\",\r\n                \"enable\": \"S\"\r\n            }\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/favorite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA2OTE5MywiZXhwIjoxNjYyMDcyNzkzfQ.1MEHxkZE4HRyI3UaG74nX45_5EXCBryjDtPtfIDxin3gDGCecENlkfKv78x3Oss54fkr67L8GTCvCyaoWFfNtQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/favorite/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"favorite",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA2OTE5MywiZXhwIjoxNjYyMDcyNzkzfQ.1MEHxkZE4HRyI3UaG74nX45_5EXCBryjDtPtfIDxin3gDGCecENlkfKv78x3Oss54fkr67L8GTCvCyaoWFfNtQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"product\": {\r\n                \"id\": 2,\r\n                \"name\": \"Casa\",\r\n                \"year\": \"2015\",\r\n                \"description\": \"Casa\",\r\n                \"city\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"Bogota\",\r\n                    \"country\": \"Colombia\"\r\n                },\r\n                \"category\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"Apartamento\",\r\n                    \"type\": \"Vivienda\"\r\n                },\r\n                \"policy\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"check-in\",\r\n                    \"description\": \"el check-in es antes de las 10am\",\r\n                    \"invoice\": 1000.0\r\n                },\r\n                \"image\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"mi-imagen.png\",\r\n                    \"description\": \"una imagen\",\r\n                    \"url\": \"http://localhost:8080/images\"\r\n                }\r\n            },\r\n            \"customer\": {\r\n                \"id\": 1,\r\n                \"document\": \"1013616358\",\r\n                \"email\": \"daerb9011@gmail.com\",\r\n                \"password\": \"$2a$10$TzMMHNtXEwvRg1Yd1voRFueordr3IvMFYT85hJQYsuTPYWtnBZpNW\",\r\n                \"name\": \"Diego\",\r\n                \"lastName\": \"Panqueva\",\r\n                \"role\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"ROLE_ADMIN\",\r\n                    \"enable\": \"S\"\r\n                }\r\n            }\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/favorite/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"favorite",
+								"2"
 							]
 						}
 					},
