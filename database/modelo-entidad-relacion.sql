@@ -122,6 +122,8 @@ CREATE TABLE IF NOT EXISTS `dh_proyecto_integrador`.`dh_usuario` (
   `cedula` VARCHAR(50) NOT NULL,
   `correo` VARCHAR(50) NOT NULL,
   `clave` VARCHAR(100) NOT NULL,
+  `nombre` VARCHAR(50) NOT NULL,
+  `apellido` VARCHAR(50) NOT NULL,
   `role_id` INT(11) NOT NULL,
   PRIMARY KEY (`usuario_id`),
   UNIQUE INDEX `cedula_UNIQUE` (`cedula` ASC) ,
@@ -146,7 +148,75 @@ ENGINE = INNODB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_spanish_ci;
 
+CREATE TABLE IF NOT EXISTS `dh_proyecto_integrador`.`dh_reserva` (
+  `reserva_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `feinicio_reserva` DATE NOT NULL,
+  `fefin_reserva` DATE NOT NULL,
+  `usuario_id` INT(11) NOT NULL,
+  `producto_id` INT(11) NOT NULL,
+  PRIMARY KEY (`reserva_id`),
+  INDEX `fk_dh_reserva_dh_usuario1_idx` (`usuario_id` ASC),
+  INDEX `fk_dh_reserva_dh_producto1_idx` (`producto_id` ASC),
+  CONSTRAINT `fk_dh_reserva_dh_usuario1`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `dh_proyecto_integrador`.`dh_usuario` (`usuario_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_dh_reserva_dh_producto1`
+    FOREIGN KEY (`producto_id`)
+    REFERENCES `dh_proyecto_integrador`.`dh_producto` (`producto_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = INNODB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
+
+
+CREATE TABLE IF NOT EXISTS `dh_proyecto_integrador`.`dh_favorito` (
+  `favorito_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `usuario_id` INT(11) NOT NULL,
+  `producto_id` INT(11) NOT NULL,
+  PRIMARY KEY (`favorito_id`),
+  INDEX `fk_dh_favorito_dh_usuario1_idx` (`usuario_id` ASC),
+  INDEX `fk_dh_favorito_dh_producto1_idx` (`producto_id` ASC),
+  CONSTRAINT `fk_dh_favorito_dh_usuario1`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `dh_proyecto_integrador`.`dh_usuario` (`usuario_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_dh_favorito_dh_producto1`
+    FOREIGN KEY (`producto_id`)
+    REFERENCES `dh_proyecto_integrador`.`dh_producto` (`producto_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = INNODB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+INSERT INTO `dh_proyecto_integrador`.`dh_caracteristica` (`nombre`, `tipo`) VALUES ('Aire acondicionado', 'Air');
+INSERT INTO `dh_proyecto_integrador`.`dh_caracteristica` (`nombre`, `tipo`) VALUES ('Piscina', 'Piscina');
+
+INSERT INTO `dh_proyecto_integrador`.`dh_imagenes` (`url`, `nombre`, `descripcion`) VALUES ('http://localhost:8080/images', 'mi-imagen.png', 'una imagen');
+INSERT INTO `dh_proyecto_integrador`.`dh_politica` (`nombre`, `descripcion`, `multa`) VALUES ('check-in', 'el check-in es antes de las 10am', '1000');
+
+INSERT INTO `dh_proyecto_integrador`.`dh_ciudad` (`nombre`, `pais`) VALUES ('Bogota', 'Colombia');
+INSERT INTO `dh_proyecto_integrador`.`dh_ciudad` (`nombre`, `pais`) VALUES ('Medellin', 'Colombia');
+
+INSERT INTO `dh_proyecto_integrador`.`dh_categoria` (`nombre`, `tipo`) VALUES ('Apartamento', 'Vivienda');
+INSERT INTO `dh_proyecto_integrador`.`dh_categoria` (`nombre`, `tipo`) VALUES ('Automovil', 'Auto');
+
+INSERT INTO `dh_proyecto_integrador`.`dh_role` (`nombre`) VALUES ('ROLE_ADMIN');
+INSERT INTO `dh_proyecto_integrador`.`dh_role` (`nombre`) VALUES ('ROLE_USER'); 
+
+INSERT INTO `dh_proyecto_integrador`.`dh_usuario` (`cedula`, `correo`, `clave`, `nombre`, `apellido`, `role_id`) VALUES ('1234567890', 'correo@gmail.com', '$2a$10$TzMMHNtXEwvRg1Yd1voRFueordr3IvMFYT85hJQYsuTPYWtnBZpNW', 'Diego', 'Panqueva', '1'); 
+INSERT INTO `dh_proyecto_integrador`.`dh_usuario` (`cedula`, `correo`, `clave`, `nombre`, `apellido`, `role_id`) VALUES ('1234567891', 'otro@hotmail.com', '$2a$10$TzMMHNtXEwvRg1Yd1voRFueordr3IvMFYT85hJQYsuTPYWtnBZpNW', 'Alejandro', 'Benitez', '2'); 
+
+INSERT INTO `dh_proyecto_integrador`.`dh_favorito` (`usuario_id`, `producto_id`) VALUES ('1', '2');
+INSERT INTO `dh_proyecto_integrador`.`dh_favorito` (`usuario_id`, `producto_id`) VALUES ('1', '1'); 
