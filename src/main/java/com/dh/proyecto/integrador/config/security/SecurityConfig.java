@@ -95,9 +95,10 @@ public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/auth/**", "/api/v1/user/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/auth/**", "/api/v1/user/**","/api/v1/search-filter/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/product/**", "/api/v1/category/**"
-                        , "/api/v1/city/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**").permitAll()
+                        , "/api/v1/city/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
+                ).permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/product/**", "/api/v1/category/**"
                         , "/api/v1/cit/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
                         , "/api/v1/role/**").hasAnyRole("ADMIN")
@@ -126,7 +127,7 @@ public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
      * Se registran los cors origin para que el ecosistema permita el libre consumo de los endpoints desde
      * el front
      */
-    @Bean
+   /* @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(Arrays.asList("http://localhost:4200", "*"));
@@ -136,16 +137,16 @@ public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
         UrlBasedCorsConfigurationSource cors = new UrlBasedCorsConfigurationSource();
         cors.registerCorsConfiguration("/**", config);
         return cors;
-    }
+    }*/
 
     /**
      * Registro los filtros configurados anteriormente para que sea un filter implementado por sprinb
      * de esta manera uso e implemento el registro y apertura de los cors
      */
-    @Bean
+   /* @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
-    }
+    }*/
 }

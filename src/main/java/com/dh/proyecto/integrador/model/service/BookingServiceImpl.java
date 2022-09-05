@@ -27,6 +27,14 @@ public class BookingServiceImpl implements IBookingService {
         return mapperUtil.map(bookingRepository.findById(id), BookingDTO.class);
     }
 
+
+    /**
+     * Este metodo va a permitir guardar una reserva
+     * tengan en cuenta que el manejo esta en que a la hora de buscar por fechas y/o ciudad
+     * ya estará filtrado los productos disponibles.
+     * ver referencia (SearchFiltersController.java)
+     *
+     * */
     @Override
     public BookingDTO save(BookingDTO booking) {
         return mapperUtil.map(bookingRepository.save(mapperUtil.map(booking, BookingEntity.class)), BookingDTO.class);

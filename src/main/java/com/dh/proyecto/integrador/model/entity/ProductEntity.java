@@ -18,7 +18,17 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "ProductEntity.findByCity", query = "SELECT p FROM ProductEntity p WHERE p.city.id = :cityId"),
         @NamedQuery(name = "ProductEntity.findByPolicy", query = "SELECT p FROM ProductEntity p WHERE p.policy.id = :policyId"),
-        @NamedQuery(name = "ProductEntity.findByCategory", query = "SELECT p FROM ProductEntity p WHERE p.category.id = :categoryId")
+        @NamedQuery(name = "ProductEntity.findByCategory", query = "SELECT p FROM ProductEntity p WHERE p.category.id = :categoryId"),
+        @NamedQuery(name = "ProductEntity.findProductByCityAndDates", query = "SELECT p FROM ProductEntity p " +
+                "WHERE NOT EXISTS(" +
+                "SELECT 1 FROM BookingEntity b WHERE b.product.id = p.id " +
+                "AND :feFin <= b.checkOut AND :feInit <= b.checkIn"  +
+                ") AND p.city.id = :cityId"),
+        @NamedQuery(name = "ProductEntity.findProductByDates", query = "SELECT p FROM ProductEntity p " +
+                "WHERE NOT EXISTS(" +
+                "SELECT 1 FROM BookingEntity b WHERE b.product.id = p.id " +
+                "AND :feFin <= b.checkOut AND :feInit <= b.checkIn"  +
+                ")")
 })
 public class ProductEntity {
 
