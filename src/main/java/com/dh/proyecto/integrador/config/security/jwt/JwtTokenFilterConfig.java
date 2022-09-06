@@ -32,6 +32,11 @@ public class JwtTokenFilterConfig extends OncePerRequestFilter {
             throws ServletException, IOException {
         String token = myToken(request);
         if (token != null && jwtProviderConfig.validateToken(token)) {
+            /**
+             * Inicia a revisar si el token tiene los permisos para ingresar a ese recurso
+             * que estamos consumiendo, ver que tenga y cuente con los tiempos actualizados
+             * de expiración y de integridad.
+             * */
             String username = jwtProviderConfig.getUserNameFromToken(token);
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             UsernamePasswordAuthenticationToken authenticationToken =
@@ -41,6 +46,11 @@ public class JwtTokenFilterConfig extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    /**
+     * Metodo de apoyo para obtener el token que se esta enviando desde el front
+     * Se hace un reemplazo del Bearer por un vacio "", esto para tener solamente el
+     * token como tal
+     * */
     private String myToken(HttpServletRequest request) {
         String header = request.getHeader("Authorization");
         if (header != null && header.startsWith("Bearer")) {

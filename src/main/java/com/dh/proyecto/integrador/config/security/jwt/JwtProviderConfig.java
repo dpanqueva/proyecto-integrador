@@ -32,6 +32,10 @@ public class JwtProviderConfig {
     public String generateToken(Authentication auth) {
         MainUserAuth mainUserAuth = (MainUserAuth) auth.getPrincipal();
         Map<String, Object> claims = new HashMap<>();
+        /**
+         * claims, es una variable para generar nueva información de acuerdo a lo que
+         * yo necesite entregarle al front
+         * */
         claims.put("lastName",mainUserAuth.getLastName());
         claims.put("name",mainUserAuth.getName());
         return Jwts.builder()
