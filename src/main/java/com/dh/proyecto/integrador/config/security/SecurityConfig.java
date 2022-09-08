@@ -11,17 +11,14 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -87,7 +84,7 @@ public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
      * Registro de los endpoints, definiendo quien tiene acceso a cada uno de ellos, esto con el fin de darle
      * seguridad a nuestra aplicación
      */
-   // @Override
+    // @Override
     @Primary
     @Bean
     protected HttpSecurity configure(HttpSecurity http) throws Exception {
@@ -95,7 +92,7 @@ public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/auth/**", "/api/v1/user/**","/api/v1/search-filter/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/auth/**", "/api/v1/user/**", "/api/v1/search-filter/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/product/**", "/api/v1/category/**"
                         , "/api/v1/city/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
                 ).permitAll()
@@ -114,39 +111,40 @@ public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
                 .antMatchers(HttpMethod.DELETE, "/api/v1/booking/**", "/api/v1/favorite/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/booking/**", "/api/v1/favorite/**").hasAnyRole("USER", "ADMIN")
 
-                 //.anyRequest().authenticated()
+                //.anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPointConfig)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-        return  http;
+        return http;
     }
 
     /**
      * Se registran los cors origin para que el ecosistema permita el libre consumo de los endpoints desde
      * el front
      */
-   /* @Bean
+    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("http://localhost:4200", "*"));
+        config.setAllowedOriginPatterns(Arrays.asList("*"));
+        //config.setAllowedOrigins(Arrays.asList("http://localhost:4200", "*"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowCredentials(true);
         config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
         UrlBasedCorsConfigurationSource cors = new UrlBasedCorsConfigurationSource();
         cors.registerCorsConfiguration("/**", config);
         return cors;
-    }*/
+    }
 
     /**
      * Registro los filtros configurados anteriormente para que sea un filter implementado por sprinb
      * de esta manera uso e implemento el registro y apertura de los cors
      */
-   /* @Bean
+    @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
-    }*/
+    }
 }
