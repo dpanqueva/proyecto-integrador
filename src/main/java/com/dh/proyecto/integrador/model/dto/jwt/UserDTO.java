@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -26,5 +24,5 @@ public class UserDTO {
 
     private String lastName;
     // role
-    private RoleEntity role;
+    private RoleDTO role;
 }
