@@ -94,17 +94,17 @@ public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/auth/**", "/api/v1/user/**", "/api/v1/search-filter/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/product/**", "/api/v1/category/**"
-                        , "/api/v1/city/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
+                        , "/api/v1/cityy/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
                         ,"/swagger-doc/**"
                 ).permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/product/**", "/api/v1/category/**"
-                        , "/api/v1/cit/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
+                        , "/api/v1/city/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
                         , "/api/v1/role/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/v1/product/**", "/api/v1/category/**"
-                        , "/api/v1/cit/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
+                        , "/api/v1/city/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
                         , "/api/v1/role/**", "/api/v1/user/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/api/v1/product/**", "/api/v1/category/**"
-                        , "/api/v1/cit/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
+                        , "/api/v1/city/**", "/api/v1/feature/**", "/api/v1/policy/**", "/api/v1/product-feature/**"
                         , "/api/v1/role/**", "/api/v1/user/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/role/**", "/api/v1/user/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/v1/booking/**", "/api/v1/favorite/**").hasAnyRole("USER", "ADMIN")
