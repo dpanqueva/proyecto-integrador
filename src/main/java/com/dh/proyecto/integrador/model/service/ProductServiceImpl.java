@@ -5,6 +5,8 @@ import com.dh.proyecto.integrador.model.entity.ProductEntity;
 import com.dh.proyecto.integrador.model.repository.IProductRepository;
 import com.dh.proyecto.integrador.util.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,25 @@ public class ProductServiceImpl implements IProductService {
 
     @Autowired
     private MapperUtil mapperUtil;
+
+    /**
+     * Recibe el objeto pageable que es el que ya cuenta con la configuración exacta para traer
+     * la consulta desde bd con los datos, página programada de acuerdo a lo que le dimos en
+     * página y datos a mostrar, luego tenemos un convertidor que se encarga de darnos un page de
+     * dto y no de entidad.
+     * El objeto page tiene funciones que serán vitales para que en el front esta parte pueda
+     * funcionar correctamente, es decir, page cuenta con la cantidad total de elementos en la bd
+     * cuenta con el valor de la página actual, cuenta con el número de datos que estamos mostrando
+     * esto con el fin de hacerlo configurable desde el front, ya que desde allí enviaremos la pagina
+     * la cantidad de datos a mostrar.
+     * @param pageable
+     * @return instancia con los productos en un wrapper de page Page<ProductDTO>
+     *
+     * */
+    @Override
+    public Page<ProductDTO> findAll(Pageable pageable) {
+        return mapperUtil.mapEntityPageIntoDtoPage(productRepository.findAll(pageable), ProductDTO.class);
+    }
 
     @Override
     public List<ProductDTO> findAll() {
@@ -56,10 +77,10 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public ProductDTO update(ProductDTO product, Long id) {
         ProductEntity productUpdated = productRepository.findById(id).orElse(null);
-        if(productUpdated == null){
+        if (productUpdated == null) {
             // error
         }
-        ProductEntity productNewData = mapperUtil.map(product,ProductEntity.class);
+        ProductEntity productNewData = mapperUtil.map(product, ProductEntity.class);
         productUpdated.setCategory(productNewData.getCategory());
         productUpdated.setDescription(productNewData.getDescription());
         productUpdated.setCity(productNewData.getCity());

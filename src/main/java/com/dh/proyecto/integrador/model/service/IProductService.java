@@ -1,10 +1,14 @@
 package com.dh.proyecto.integrador.model.service;
 
 import com.dh.proyecto.integrador.model.dto.ProductDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface IProductService {
+
+    public Page<ProductDTO> findAll(Pageable pageable);
 
     public List<ProductDTO> findAll();
 
