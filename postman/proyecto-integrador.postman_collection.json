@@ -40,7 +40,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwiaWF0IjoxNjYxOTgyNjY5LCJleHAiOjE2NjE5ODYyNjl9.C5axAdIni-P2yK_kOhAjE3Pmn1U-ZvGJwJyzEB3Wm20iVBdNrmHma74VHfj_cAsjsWHVcjJaO5cUWeDsHcs0vw",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MzEwNDU1NCwiZXhwIjoxNjYzMTA4MTU0fQ.JeGLp-kw9_OgrNkUFzmldsogej4YjJukA-wJxzkUfD5eBYlCm1wXgBkLznhOjEncN-cKGHzjlIGSNWAKA3HDwA",
 									"type": "string"
 								}
 							]
@@ -128,6 +128,16 @@
 				{
 					"name": "DELETE product",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ4bHJ2QGhvdG1haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA3MzY0MSwiZXhwIjoxNjYyMDc3MjQxfQ.-28y1HW_-o4RvzBwpOK-UaSxQiiEW2M9Fc4z3yOEPKyvmNiaaafkXvLvABjN8IW24J9ObNUUM4vLSl4n-K_7sg",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -211,6 +221,29 @@
 								"product",
 								"city",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET productPageable",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/api/v1/product/6/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"6",
+								"10"
 							]
 						}
 					},
@@ -948,7 +981,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n            \"document\": \"123456\",\r\n            \"email\": \"dpanquev@emeal.nttdata.com\",\r\n            \"password\": \"12345\",\r\n            \"name\": \"user\",\r\n            \"lastName\": \"prueba\",\r\n            \"role\": {\r\n                \"id\": 2,\r\n                \"name\": \"ROLE_USER\",\r\n                \"enable\": \"S\"\r\n            }\r\n        }",
+							"raw": "{\r\n            \"document\": \"12345\",\r\n            \"email\": \"dpanqueva@emeal.nttdata.com\",\r\n            \"password\": \"12345\",\r\n            \"name\": \"user\",\r\n            \"lastName\": \"prueba\",\r\n            \"role\": {\r\n                \"id\": 2,\r\n                \"name\": \"ROLE_USER\",\r\n                \"enable\": \"S\"\r\n            }\r\n        }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1270,7 +1303,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA2OTE5MywiZXhwIjoxNjYyMDcyNzkzfQ.1MEHxkZE4HRyI3UaG74nX45_5EXCBryjDtPtfIDxin3gDGCecENlkfKv78x3Oss54fkr67L8GTCvCyaoWFfNtQ",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWVyYjkwMTFAZ21haWwuY29tIiwibGFzdE5hbWUiOiJQYW5xdWV2YSIsIm5hbWUiOiJEaWVnbyIsImlhdCI6MTY2MjA3MzI4OSwiZXhwIjoxNjYyMDc2ODg5fQ.byNRTPLOzuR1uz7dG91cmQ0bMGUByKENR4VJRrf3yuXWbb07dYDSDzrfYUwnAvOgkOoyvQAnBemcAmgHFBeJqQ",
 									"type": "string"
 								}
 							]
@@ -1433,6 +1466,42 @@
 								"v1",
 								"favorite",
 								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "filter",
+			"item": [
+				{
+					"name": "POST searchFilterDates",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\":{\r\n        \"id\":1,\r\n        \"name\":\"Medellin\",\r\n        \"country\":\"Colombia\"\r\n    },\r\n    \"feInit\":\"2022-10-01\",\r\n    \"feFin\":\"2022-10-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/api/v1/search-filter/dates",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"api",
+								"v1",
+								"search-filter",
+								"dates"
 							]
 						}
 					},
